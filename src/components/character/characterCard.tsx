@@ -23,7 +23,7 @@ export const CharacterCard: FC<CharacterProps> = ({ card }) => {
 
   return (
     <ArticleWrapper>
-      <Card key={card.id}>
+      <Card key={card.id} sx={{ width: 250 }}>
         <CardContent>
           {characterId && <Navigate to={`/${characterId}`} />}
 

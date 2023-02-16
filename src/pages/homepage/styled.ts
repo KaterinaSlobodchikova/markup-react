@@ -5,6 +5,12 @@ export const ContentWrapper = styled.div`
   gap: 15px;
 `;
 
+export const Article = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+`;
+
 export const ArticleWrapper = styled.section`
   display: flex;
   flex-wrap: wrap;

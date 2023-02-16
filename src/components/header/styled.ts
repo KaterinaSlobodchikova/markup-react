@@ -5,11 +5,24 @@ export const HeaderContainer = styled.header`
   top: 0;
   z-index: 10;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: blue;
-  justify-content: space-around;
+  background: #c2bd32;
   gap: 10px;
   padding: 10px;
   min-width: 230px;
+  height: 90px;
+  color: white;
+`;
+
+export const HeaderWrapper = styled.div`
+  
+`;
+
+export const DropdownWrapper = styled.div`
+  
+`;
+
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 10px;
 `;
