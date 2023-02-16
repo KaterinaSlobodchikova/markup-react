@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const ContentWrapper = styled.div`
   display: flex;
   gap: 15px;
+
+  @media screen and (max-width: 640px) {
+    flex-direction: column;
+  }
 `;
 
 export const Article = styled.div`
@@ -20,4 +24,3 @@ export const ArticleWrapper = styled.section`
   justify-content: center;
   align-content: flex-start;
 `;
-

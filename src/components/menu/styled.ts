@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledMenu = styled.nav<{ open: boolean }>`
   display: flex;
   flex-direction: column;
+  gap: 10px;
   /* justify-content: center; */
   background: #769c90;
   /* height: 100vh; */

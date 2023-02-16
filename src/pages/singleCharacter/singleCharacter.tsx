@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getCharacter } from "../../api/characterApi";
 import { CharacterCard } from "../../components/character";
 import { ICharacters } from "../../types/character.model";
+import { ContentWrapper, InfoWrapper } from "./styled";
 
 export const SingleCharacter: FC = () => {
   const { id } = useParams();
@@ -36,6 +37,12 @@ export const SingleCharacter: FC = () => {
   // }, [character]);
 
   return (
-    <div>{character ? <CharacterCard card={character} /> : "Ooops..."}</div>
+    <ContentWrapper>
+      {character ? <CharacterCard card={character} /> : "Ooops..."}
+      <InfoWrapper>
+        <span><p>Status:</p> {character?.status}</span>
+        <span><p>Gender:</p> {character?.gender}</span>
+      </InfoWrapper>
+    </ContentWrapper>
   );
 };

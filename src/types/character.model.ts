@@ -4,4 +4,5 @@ export interface ICharacters {
   status: string;
   image: string;
   species: string;
+  gender: string;
 }
