@@ -12,6 +12,7 @@ export const Menu: FC<MenuProps> = ({ open, setOpen }) => {
     <StyledMenu open={open} setOpen={setOpen}>
       <a href="/">Home</a>
       <a href="/about">About</a>
+      <a href="/contact">Contact Us</a>
     </StyledMenu>
   );
 };

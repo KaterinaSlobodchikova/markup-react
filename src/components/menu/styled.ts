@@ -23,7 +23,6 @@ export const StyledMenu = styled.nav<{ open: boolean }>`
     font-size: 1rem;
     text-transform: uppercase;
     /* padding: 2rem 0; */
-    letter-spacing: 0.5rem;
     color: #dadae3;
     text-decoration: none;
     transition: color 0.3s linear;
