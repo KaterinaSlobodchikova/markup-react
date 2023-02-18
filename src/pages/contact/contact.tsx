@@ -7,11 +7,13 @@ import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { contactActions } from "../../store/contact/contact.slice";
+import { useNavigate } from "react-router-dom";
 
 export const ContactUsPage: FC = () => {
   const name = useSelector((state: RootState) => state.contact.name);
   const email = useSelector((state: RootState) => state.contact.email);
   const text = useSelector((state: RootState) => state.contact.text);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const nameHandler = (e: any) => {
@@ -24,6 +26,10 @@ export const ContactUsPage: FC = () => {
 
   const textHandler = (e: any) => {
     dispatch(contactActions.setText(e.target.value));
+  };
+
+  const goToHomeHandler = () => {
+    navigate("/");
   };
 
   return (
@@ -72,6 +78,9 @@ export const ContactUsPage: FC = () => {
             </Button>
           </div>
         </div>
+        <Button onClick={() => goToHomeHandler()} variant="outlined">
+          go to home page
+        </Button>
       </Box>
     </PageContainer>
   );

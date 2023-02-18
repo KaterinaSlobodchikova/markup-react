@@ -1,47 +1,41 @@
 import { Avatar, Card, CardContent, CardHeader } from "@mui/material";
 import { FC, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getCharacter } from "../../api/characterApi";
 import { CharacterCard } from "../../components/character";
-import { ICharacters } from "../../types/character.model";
+import { getSelected } from "../../store/characters/characters.actions";
+import {
+  CharactersSelectors,
+  ICharState,
+} from "../../store/characters/characters.slice";
+import { AppDispatch } from "../../store/store";
 import { ContentWrapper, InfoWrapper } from "./styled";
 
 export const SingleCharacter: FC = () => {
-  const { id } = useParams();
-  const [character, setCharacter] = useState<ICharacters>();
+  const { id } = useParams<{ id: string }>();
+  const [character, setCharacter] = useState<ICharState>();
+  // const selectedCharacter = useSelector(CharactersSelectors.getSelectedCharacter);
+  // const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     if (id) getCharacter(id).then((result) => setCharacter(result));
   }, [id]);
 
-  // const memoCharacter = useMemo(() => {
-  //   return (
-  //     <>
-  //       {character && (
-  //         <Card key={character.id}>
-  //           <CardContent>
-  //             <CardHeader
-  //               title={character.name}
-  //               subheader={character.species}
-  //             />
-  //             <Avatar
-  //               alt="character-image"
-  //               src={character.image}
-  //               sx={{ width: 156, height: 156 }}
-  //             />
-  //           </CardContent>
-  //         </Card>
-  //       )}
-  //     </>
-  //   );
-  // }, [character]);
+  // useEffect(() => {
+  //  dispatch(getSelected(id!))
+  // }, []);
 
   return (
     <ContentWrapper>
       {character ? <CharacterCard card={character} /> : "Ooops..."}
       <InfoWrapper>
-        <span><p>Status:</p> {character?.status}</span>
-        <span><p>Gender:</p> {character?.gender}</span>
+        <span>
+          <p>Status:</p> {character?.status}
+        </span>
+        <span>
+          <p>Gender:</p> {character?.gender}
+        </span>
       </InfoWrapper>
     </ContentWrapper>
   );

@@ -3,10 +3,10 @@ import { FC, useState, useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { getCharacter } from "../../api/characterApi";
 import { ArticleWrapper } from "../../pages/homepage/styled";
-import { ICharacters } from "../../types/character.model";
+import { ICharState } from "../../store/characters/characters.slice";
 
 type CharacterProps = {
-  card: ICharacters;
+  card: ICharState;
 };
 
 export const CharacterCard: FC<CharacterProps> = ({ card }) => {
@@ -17,9 +17,9 @@ export const CharacterCard: FC<CharacterProps> = ({ card }) => {
   //   const { id } = useParams();
   //   const [character, setCharacter] = useState<ICharacters>();
 
-  //   useEffect(() => {
-  //     if (id) getCharacter(id).then((result) => setCharacter(result));
-  //   }, [id]);
+    // useEffect(() => {
+    //   if (id) getCharacter(id).then((result) => setCharacter(result));
+    // }, [id]);
 
   return (
     <ArticleWrapper>
