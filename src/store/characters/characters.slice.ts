@@ -38,6 +38,9 @@ const charactersSlice = createSlice({
     builder.addCase(getAll.fulfilled, (state, action) => {
       state.charactersList.push(...action.payload);
     });
+    // builder.addCase(getSelected.fulfilled, (state, action) => {
+    //   state.selectedCharacter.push(...action.payload);
+    // });
   },
 });
 

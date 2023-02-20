@@ -15,8 +15,9 @@ import { ContentWrapper, InfoWrapper } from "./styled";
 export const SingleCharacter: FC = () => {
   const { id } = useParams<{ id: string }>();
   const [character, setCharacter] = useState<ICharState>();
-  // const selectedCharacter = useSelector(CharactersSelectors.getSelectedCharacter);
-  // const dispatch = useDispatch<AppDispatch>();
+  //   const selectedCharacter = useSelector(CharactersSelectors.getSelectedCharacter);
+  //   const dispatch = useDispatch<AppDispatch>();
+  // console.log(selectedCharacter)
 
   useEffect(() => {
     if (id) getCharacter(id).then((result) => setCharacter(result));
