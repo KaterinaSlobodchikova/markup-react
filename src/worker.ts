@@ -1,12 +1,10 @@
-onmessage = async ($event) => {
-  if ($event && $event.data && $event.data.msg === "incClicks") {
-    const newCounter = incClicks($event.data.countClicks);
-    postMessage(newCounter);
-  }
-};
+// eslint-disable-next-line no-restricted-globals
+const ctx: Worker = self as any;
 
-export function incClicks(countClicks: number) {
-  const start = Date.now();
-  while (Date.now() < start + 5000) {}
-  return countClicks + 1;
-}
+ctx.addEventListener("message", (event) => {
+  let sum = 0;
+  for (let i = 0; i < 2000000000; i++) sum += i;
+  postMessage(sum);
+});
+
+export default null as any;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
-export const LoadingWrapper = styled.div`
+export const ArticleWrapper = styled.article`
   display: flex;
+  gap: 15px;
 `;

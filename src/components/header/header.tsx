@@ -5,27 +5,28 @@ import {
   HeaderContainer,
   HeaderWrapper,
 } from "./styled";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const Header = () => {
   const [countTomato, setCountTomato] = useState<number>(0);
-  const [countClicks, setCountClicks] = useState<number>(0);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const clicksWorker: Worker = new Worker("../../../public/worker/worker");
+  const [result, setResult] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    clicksWorker.onmessage = ($event: MessageEvent) => {
-      if ($event && $event.data) {
-        setCountClicks($event.data);
-      }
+  const sum = () => {
+    setResult("");
+    setIsLoading(true);
+
+    const worker = new Worker(new URL("../../worker", import.meta.url));
+    worker.postMessage(null);
+
+    worker.onmessage = function (e) {
+      setIsLoading(false);
+      setResult(e.data);
     };
-  }, [clicksWorker]);
-
-  function incClicks() {
-    clicksWorker.postMessage({ msg: "incClicks", countClicks: countClicks });
-  }
+  };
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -37,14 +38,10 @@ export const Header = () => {
   return (
     <HeaderContainer>
       <HeaderWrapper>
-        Clicks: {countClicks} | Tomato: {countTomato}
+        Sum: {result} | Tomato: {countTomato}
         <ButtonWrapper>
-          <Button
-            onClick={() => incClicks()}
-            variant="contained"
-            sx={{ width: 150 }}
-          >
-            count clicks
+          <Button onClick={() => sum()} variant="contained" sx={{ width: 150 }}>
+            sum
           </Button>
           <Button
             onClick={() => setCountTomato(countTomato + 1)}

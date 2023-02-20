@@ -30,22 +30,14 @@ const charactersSlice = createSlice({
   name: "characters",
   initialState,
   reducers: {
-    getCharacters: (state, action: PayloadAction<undefined>) => {},
     setLoadingCharacters: (state, action: PayloadAction<boolean>) => {
       state.isCharactersLoading = action.payload;
-    },
-    setCharacters: (state, action: PayloadAction<ICharState[]>) => {
-      state.charactersList = action.payload;
-    },
-    setSelectedCharacter: (state: any, action: any) => {
-      state.selectedCharacter = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(getAll.fulfilled, (state, action) => {
-      state.charactersList.push(action.payload);
+      state.charactersList.push(...action.payload);
     });
-    
   },
 });
 
@@ -56,4 +48,6 @@ export const CharactersSelectors = {
   getAllCharacters: (state: RootState) => state.characters.charactersList,
   getSelectedCharacter: (state: RootState) =>
     state.characters.selectedCharacter,
+  getCharactersLoading: (state: RootState) =>
+    state.characters.isCharactersLoading,
 };
