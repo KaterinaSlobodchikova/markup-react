@@ -1,53 +1,29 @@
 import { FC, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Autocomplete, TextField } from "@mui/material";
-import { Article, ArticleWrapper, ContentWrapper } from "./styled";
-import { CharacterCard } from "../../components/character";
+import { Article, ContentWrapper } from "./styled";
 import { Aside } from "../../components/aside";
 import { Burger } from "../../components/burger";
 import { Menu } from "../../components/menu";
 import {
   CharactersSelectors,
-  ICharState,
 } from "../../store/characters/characters.slice";
 import { getAll } from "../../store/characters/characters.actions";
 import { AppDispatch } from "../../store/store";
-import Loading from "../../components/loading";
+import { AllCharacters } from "../characters";
 
 const Homepage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState(false);
   const charactersList = useSelector(CharactersSelectors.getAllCharacters);
-  const isAllCharactersLoading = useSelector(
-    CharactersSelectors.getCharactersLoading
-  );
-
-  // const inputRef = useRef();
-  // const [characters, setCharacters] = useState([]);
-  // const [characterId, setCharacterId] = useState<null | number>();
-  // const [input, setInput] = useState("");
-
-  // useEffect(() => {
-  //   getCharacters().then((result) => setCharacters(result.results));
-  // }, []);
 
   useEffect(() => {
     dispatch(getAll());
   }, []);
 
-  // const handleClick = (id: number) => {
-  //   setCharacterId(id);
-  // };
-
-  const allCharacters = useMemo(() => {
-    return charactersList.map((card: ICharState) => (
-      <CharacterCard key={card.id} card={card} />
-    ));
-  }, [charactersList]);
-
   return (
     <ContentWrapper>
-      {isAllCharactersLoading && <Loading />}
+      {/* {isAllCharactersLoading && <Loading />} */}
 
       <Burger open={open} setOpen={setOpen} />
       <Menu open={open} setOpen={setOpen} />
@@ -73,7 +49,7 @@ const Homepage: FC = () => {
           }}
         />
 
-        <ArticleWrapper>{allCharacters}</ArticleWrapper>
+        <AllCharacters/>
       </Article>
 
       <Aside></Aside>

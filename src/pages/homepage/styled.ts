@@ -33,13 +33,3 @@ export const Article = styled.div`
     border: 1px solid #1f4373;
   }
 `;
-
-export const ArticleWrapper = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  padding: 15px 0;
-  align-items: center;
-  justify-content: center;
-  align-content: flex-start;
-`;

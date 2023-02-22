@@ -2,8 +2,8 @@ import { Avatar, Button, Card, CardContent, CardHeader } from "@mui/material";
 import { FC, useState, useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { getCharacter } from "../../api/characterApi";
-import { ArticleWrapper } from "../../pages/homepage/styled";
 import { ICharState } from "../../store/characters/characters.slice";
+import { ArticleWrapper } from "./styled";
 
 type CharacterProps = {
   card: ICharState;
