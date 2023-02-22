@@ -13,7 +13,6 @@ import {
 import { getAll } from "../../store/characters/characters.actions";
 import { AppDispatch } from "../../store/store";
 import Loading from "../../components/loading";
-import Panda from "../../assets/panda1.jpg";
 
 const Homepage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -73,7 +72,7 @@ const Homepage: FC = () => {
             return options;
           }}
         />
-        <img src={Panda} alt="panda"></img>
+
         <ArticleWrapper>{allCharacters}</ArticleWrapper>
       </Article>
 

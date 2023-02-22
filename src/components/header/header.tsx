@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button, Menu, MenuItem } from "@mui/material";
 import {
   ButtonWrapper,
@@ -5,7 +6,7 @@ import {
   HeaderContainer,
   HeaderWrapper,
 } from "./styled";
-import { useState } from "react";
+import { askForPermissionToReceiveNotifications } from "../../firebase";
 
 export const Header = () => {
   const [countTomato, setCountTomato] = useState<number>(0);
@@ -123,6 +124,15 @@ export const Header = () => {
           <MenuItem onClick={handleClose}>Link 3</MenuItem>
         </Menu>
       </DropdownWrapper>
+      <div className="notification-banner">
+        <button
+          className="notification-banner-link"
+          // onClick={() => requestPermission()}
+          onClick={askForPermissionToReceiveNotifications}
+        >
+          Request Permission
+        </button>
+      </div>
     </HeaderContainer>
   );
 };

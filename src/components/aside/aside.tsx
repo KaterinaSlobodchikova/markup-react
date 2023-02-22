@@ -5,6 +5,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Panda from "../../assets/panda1.jpg";
 
 export const Aside: FC = () => {
   return (
@@ -39,6 +40,7 @@ export const Aside: FC = () => {
           </Typography>
         </AccordionDetails>
       </Accordion>
+      <img src={Panda} alt="panda"></img>
     </AsideWrapper>
   );
 };
